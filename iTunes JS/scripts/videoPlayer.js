@@ -6,6 +6,8 @@ const videoButtonStop = document.querySelector('.video-button__stop');
 const videoProgress = document.querySelector('.video-progress');
 const videoTimePassed = document.querySelector('.video-time__passed');
 const videoTimeTotal = document.querySelector('.video-time__total');
+const videoVolume = document.querySelector('.video-volume');
+const videoFullscreen = document.querySelector('.video-fullscreen');
 
 const toggleIcone = () => {
     if (videoPlayer.paused){
@@ -57,12 +59,24 @@ const addZero = n => n < 10 ? '0' + n : n;
         videoTimeTotal.textContent = `${addZero(minuteTotal)}:${addZero(secondsTotal)}`; 
     });
 
-    videoProgress.addEventListener('change', () => {
+    videoProgress.addEventListener('input', () => {
         const duration = videoPlayer.duration;
         const value = videoProgress.value;
 
         videoPlayer.currentTime = (value * duration) / 100;
     });
+
+    videoFullscreen.addEventListener('click', () => {
+        videoPlayer.requestFullscreen();
+    });
+
+    videoVolume.addEventListener('input', () => {
+        videoPlayer.volume = videoVolume.value /100;
+    });
+
+    videoPlayer.volume = 0.5;
+    videoVolume.value = videoPlayer.volume * 100;
+
 };
 
 
