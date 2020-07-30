@@ -76,6 +76,13 @@ export const radioPlayerInit = () => {
 		}
 	});
 
+	radioPlayerInit.stop = () => {
+        if (!audio.paused) {
+            audio.pause();
+            changeIconPlay();
+    }
+  }
+
 }
 //добавить в mute перечеркивание значка
 // чтобы не включался звук в mute при передвижении range 

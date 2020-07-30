@@ -122,6 +122,15 @@ export const musicPlayerInit = () => {
 		} else {
 			audioPlayer.volume = prevVolume;
 		}
-	});
+    });
+    
+    musicPlayerInit.stop = () => {
+        if (!audioPlayer.paused) {
+            audioPlayer.pause();
+            audio.classList.remove('play')
+    }
+  }
+
+
 };
 
