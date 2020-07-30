@@ -7,5 +7,22 @@ html{-webkit-box-sizing:border-box;box-sizing:border-box}*,*::before,*::after{-w
 .video-volume {
     max-width: 100px;
 }
+
+.radio-volume {
+    margin: 18px 0;
+    max-width: 150px;
+    margin-left: 25px;
+}
+
+.radio-icon {
+    margin: 15px;
+}
+
+.radio-stop {
+    font-size: 30px;
+    margin-right: 25px;
+    max-width: 50px
+}
+
 /*# sourceMappingURL=style.min.css.map */
 

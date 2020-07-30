@@ -4,7 +4,9 @@ export const radioPlayerInit = () => {
 	const radioHeaderBig = document.querySelector('.radio-header__big');
 	const radioNavigation = document.querySelector('.radio-navigation');
 	const radioItem = document.querySelectorAll('.radio-item');
-	const radioStop = document.querySelector('.radio-stop');
+	const radioStop = document.querySelector('.radio-stop');	
+	const radioVolume = document.querySelector('.radio-volume');
+	const radioMute = document.querySelector('.radio-mute');
 
 	const audio = new Audio();
 	audio.type = 'audio/aac';
@@ -54,4 +56,26 @@ export const radioPlayerInit = () => {
 		}
 		changeIconPlay();
 	});
+
+	 let prevVolume = 1;
+
+	radioVolume.addEventListener('input', () => {
+		audio.volume = radioVolume.value / 100;
+		prevVolume = audio.volume;
+	});
+
+	audio.volume = 0.5;
+	radioVolume.value = audio.volume * 100;
+	
+	radioMute.addEventListener('click', () => {
+		if (audio.volume) {
+			prevVolume = audio.volume;
+			audio.volume = 0;
+		} else {
+			audio.volume = prevVolume;
+		}
+	});
+
 }
+//добавить в mute перечеркивание значка
+// чтобы не включался звук в mute при передвижении range 
